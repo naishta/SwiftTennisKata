@@ -26,21 +26,66 @@ class ScoringTests: XCTestCase {
         XCTAssertNotNil(game.playerTwo)
     }
 
-    func testThatANewGameStartsWithPlayersOneOn0Point() {
+    func testThatANewGameStartsWithPlayerOneOn0Point() {
         // GIVEN
         let game = Game()
 
         // WHEN
         // THEN
-        XCTAssertEqual(game.playerOne.score, 0)
+        XCTAssertEqual(game.playerOne.score, "0")
     }
 
-    func testThatANewGameStartsWithPlayersTwoOn0Point() {
+    func testThatANewGameStartsWithPlayerTwoOn0Point() {
         // GIVEN
         let game = Game()
 
         // WHEN
         // THEN
-        XCTAssertEqual(game.playerTwo.score, 0)
+        XCTAssertEqual(game.playerTwo.score, "0")
+    }
+
+    func testThatAGameCanHave0PointAsValidScore() {
+        //Given
+        let game = Game()
+
+        //When
+        //Then
+        XCTAssertTrue(game.valid(score: "0"))
+    }
+
+    func testThatAGameCanHave15PointAsValidScore() {
+        //Given
+        let game = Game()
+
+        //When
+        //Then
+        XCTAssertTrue(game.valid(score: "15"))
+    }
+
+    func testThatAGameCanHave30PointAsValidScore() {
+        //Given
+        let game = Game()
+
+        //When
+        //Then
+        XCTAssertTrue(game.valid(score: "30"))
+    }
+
+    func testThatAGameCanHaveGamePointAsValidScore() {
+        //Given
+        let game = Game()
+
+        //When
+        //Then
+        XCTAssertTrue(game.valid(score: "Game"))
+    }
+
+    func testThatAGameCannotHave16PointAsValidScore() {
+        //Given
+        let game = Game()
+
+        //When
+        //Then
+        XCTAssertFalse(game.valid(score: "16"))
     }
 }
