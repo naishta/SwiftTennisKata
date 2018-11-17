@@ -88,4 +88,56 @@ class ScoringTests: XCTestCase {
         //Then
         XCTAssertFalse(game.valid(score: "16"))
     }
+
+//    func testWhenPlayerOneScoresFirstPoint() {
+//        let game = Game()
+//        game.playerOne.scores()
+//        XCTAssertEqual(game.playerOne.score, "15")
+//        XCTAssertEqual(game.playerTwo.score, "0")
+//    }
+//
+//    func testWhenPlayerTwoScoresFirstPoint() {
+//        let game = Game()
+//        game.playerTwo.scores()
+//        XCTAssertEqual(game.playerTwo.score, "15")
+//        XCTAssertEqual(game.playerOne.score, "0")
+//    }
+
+    func testWhenPlayerOneScoresFirstPoint() {
+        let game = Game()
+        let point = "first"
+        let points = game.playerOne.scores(point: point)
+        XCTAssertEqual(points, "15")
+        XCTAssertEqual(game.playerTwo.score, "0")
+    }
+
+    func testWhenPlayerOneScoresSecondPoint() {
+        let game = Game()
+        let point = "second"
+        let points = game.playerOne.scores(point: point)
+        XCTAssertEqual(points, "30")
+        XCTAssertEqual(game.playerTwo.score, "0")
+    }
+
+    //TODO: Modify this to use getScores
+    func testWhenPlayerTwoScoresFirstPointWhenPlayerOneHas30Points() {
+        let game = Game()
+        let point = "first"
+        let playerTwoPoints = game.playerTwo.scores(point: point)
+        game.playerOne.score = "30"
+        XCTAssertEqual(playerTwoPoints, "15")
+        XCTAssertEqual(game.playerOne.score, "30")
+    }
+
+    //TODO: Modify this to use getScores and remove hardcoding
+    func testWhenPlayerTwoScoresSecondPointWhenPlayerOneHas30Points() {
+        let game = Game()
+        let point = "second"
+        let playerTwoPoints = game.playerTwo.scores(point: point)
+//        let playerOnePoints = game.playerOne.getScores
+        game.playerOne.score = "30"
+        XCTAssertEqual(playerTwoPoints, "30")
+        XCTAssertEqual(game.playerOne.score, "30")
+    }
+    
 }

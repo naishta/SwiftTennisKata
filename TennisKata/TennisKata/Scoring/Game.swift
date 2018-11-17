@@ -1,9 +1,29 @@
 import Foundation
 
-public struct Player {
+public final class Player {
     public var score: String = "0"
+    public var points: String!
+    public var playerOneScore: String = "0"
 
     public init() { }
+
+    public func scores(point: String) -> String {
+
+        switch point {
+        case "first":
+            points = "15"
+        case "second":
+            points = "30"
+        default:
+            points = "0"
+        }
+//        points = points + point
+        return points
+    }
+
+    public func getScores(for player: String) -> String {
+        return ""
+    }
 
 }
 
